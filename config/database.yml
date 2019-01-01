@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  # pool: 5
+  # set the DB_POOL to the MAX_THREADS for Puma Web server
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+
+development:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_development?' ) %>
+
+test:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_test?' ) %>
+
+staging:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_staging?' ) %>
+
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_production?' ) %>
