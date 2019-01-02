@@ -25,4 +25,4 @@ VOLUME ["$INSTALL_PATH/public"]
 
 
 #CMD pkill -F tmp/pids/server.pid || rm -f tmp/pids/server.pid
-CMD pkill ruby || rails s
+CMD pkill ruby || rails s -b '0.0.0.0'
