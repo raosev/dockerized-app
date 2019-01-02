@@ -9,4 +9,17 @@ default: &default
 
 development:
   <<: *default
-  url: postgresql://postgres:postgres@localhost:5432/dockerized-app_development?encoding=utf8&pool=5&timeout=5000
+#  url: postgresql://postgres:postgres@localhost:5432/dockerized-app_development?encoding=utf8&pool=5&timeout=5000
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_development?' ) %>
+
+test:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_test?' ) %>
+
+staging:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_staging?' ) %>
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"].gsub('?', '_production?' ) %>
