@@ -24,4 +24,5 @@ RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@lo
 VOLUME ["$INSTALL_PATH/public"]
 
 
-CMD rails s
+#CMD pkill -F tmp/pids/server.pid || rm -f tmp/pids/server.pid
+CMD pkill ruby || rails s
