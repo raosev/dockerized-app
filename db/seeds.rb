@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Feedback.create!(message: 'focas')
+Feedback.create!(message: 'osos')
+Feedback.create!(message: 'morsas')
