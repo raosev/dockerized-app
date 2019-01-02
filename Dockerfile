@@ -1,4 +1,4 @@
-FROM ruby-2.5.3-slim
+FROM ruby:2.5.3-slim
 MAINTAINER Rogelio Sevilla <rogelio.sevilla1@gmail.com>
 
 RUN apt-get update && apt-get install -qq -y build-essential \
@@ -17,9 +17,7 @@ RUN bundle install
 
 COPY . .
 
-RUN bundle exec rake RAILS_ENV=production /
-    DATABASE_URL=postgresql://user:pass@localhost/dbname /
-    SECRET_TOKEN=mysecrettoken assets precompile
+RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@localhost/dbname SECRET_TOKEN=mysecrettoken assets precompile
 
 
 #expose the public folder so that nginx can serve the static assets

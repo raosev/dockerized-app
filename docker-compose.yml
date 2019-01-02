@@ -15,7 +15,7 @@ redis:
   volumes:
     - ~/.docker-volumes/dockerized-app/redis/data:/var/lib/redis/data
 
-mobydock:
+dockerized-app:
   build: .
   links:
     - postgres
