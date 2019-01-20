@@ -11,9 +11,10 @@ module DockerizedApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    config.log_level = :debug
-    config.log_tags = [:subdomain, :uuid]
-    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.log_tags  = [:subdomain, :uuid]
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
     config.cache_store = :redis_store, ENV['CACHE_URL'],
         { namespace: "#{ENV['POSTGRES_ENV_POSTGRES_USER']}::cache" }

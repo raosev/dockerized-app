@@ -25,4 +25,6 @@ VOLUME ["$INSTALL_PATH/public"]
 
 
 #CMD pkill -F tmp/pids/server.pid || rm -f tmp/pids/server.pid
+# make sure to listen from every source, otherwise the host wont reach the guest, even though docker ps
+# shows that the ports are mapped correctly
 CMD pkill ruby || rails s -b '0.0.0.0'
