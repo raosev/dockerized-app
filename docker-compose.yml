@@ -15,9 +15,20 @@ services:
   redis:
     image: redis:5.0
     ports:
-      - '6379:6379'
+      - '6380:6379'
     volumes:
       - redis:/var/lib/redis/data
+
+  sidekiq:
+    depends_on:
+      - 'postgres'
+      - 'redis'
+    build: .
+    command: sidekiq -C config/sidekiq.yml.erb
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
 
   dockerized-app:
     build: .
@@ -34,3 +45,4 @@ services:
 volumes:
   postgres:
   redis:
+

@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis-rails', '~> 5.0'
 gem 'i18n', '1.3.0'
 
+gem 'sidekiq', '~> 5.2'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
